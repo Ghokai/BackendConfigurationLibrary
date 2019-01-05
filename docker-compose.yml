@@ -1,6 +1,7 @@
 version: "3.5"
 
 services:
+
   configuration-client:
     container_name: configuration-client
     build:
@@ -70,4 +71,4 @@ services:
     container_name: mongodbcs
     image: mongo:latest
     ports:
-      - 27017:27017
+      - "27017:27017"
