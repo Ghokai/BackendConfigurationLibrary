@@ -17,9 +17,22 @@
 	npm install
 	npm start
 	
+	
+![cli1](https://user-images.githubusercontent.com/11095906/50729995-4e1d7d00-10f8-11e9-8310-93c235ac9de2.png)
+![client2](https://user-images.githubusercontent.com/11095906/50729997-4e1d7d00-10f8-11e9-81a3-b7a862ccc93a.png)
+![cli3](https://user-images.githubusercontent.com/11095906/50729996-4e1d7d00-10f8-11e9-92d9-e01d9dcc45c9.png)
+
+
+
+
+	
+	
 #### Server Application
 
 Start Configuration Server application for interact with client application for crud operations and publish configuration settings to rabbitmq queue periodically to inform listener applications according to their applications settings changes
+
+![server](https://user-images.githubusercontent.com/11095906/50730001-4fe74080-10f8-11e9-8897-e6146e475507.png)
+
 
 ### Registered (Consumer) Applications
 
@@ -30,15 +43,14 @@ by calling
 	_configurationListener.GetValue<bool>(name);
 	_configurationListener.GetValue<int>(name);
 	_configurationListener.GetValue<double>(name);
+	
+	
+![sample1](https://user-images.githubusercontent.com/11095906/50729998-4eb61380-10f8-11e9-81b6-b1273bd385f3.png)
+![sample2](https://user-images.githubusercontent.com/11095906/50729999-4f4eaa00-10f8-11e9-8c40-d0e91424165a.png)
+![sample3](https://user-images.githubusercontent.com/11095906/50730000-4f4eaa00-10f8-11e9-895f-73d88aaa3500.png)	
 
-### Component Diagram
+### Component Diagram of System
 
 ![image001](https://user-images.githubusercontent.com/11095906/50729227-5e107d80-1147-11e9-8216-65f04324db3e.png)
 
-### Screens
 
-![capture1](https://user-images.githubusercontent.com/11095906/50729514-5dc6b100-114c-11e9-8c28-4b3bff03f2bb.PNG)
-
-![capture2](https://user-images.githubusercontent.com/11095906/50729506-3e2f8880-114c-11e9-84da-a80534f8a8f4.PNG)
-
-![capture3](https://user-images.githubusercontent.com/11095906/50729507-3e2f8880-114c-11e9-977c-ca23e704c0b4.PNG)
