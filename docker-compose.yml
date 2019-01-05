@@ -1,0 +1,73 @@
+version: "3.5"
+
+services:
+  configuration-client:
+    container_name: configuration-client
+    build:
+      context: ./configuration-client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+
+  configuration-server:
+    container_name: configuration-server
+    build:
+      context: ./ConfigurationManager/
+      dockerfile: ConfigurationServer.DockerFile
+    environment:
+      - "RabbitMq/Host=rabbit1"
+      - "RabbitMq/Username=rabbitmq"
+      - "RabbitMq/Password=rabbitmq"
+      - "ConnStr=mongodb://mongodbcs:27017"
+      - "RefreshInterval=10000"
+      - "ClientUrl=http://localhost:3000"
+    ports:
+      - "50165:80"
+
+  sample-consumer-app:
+    container_name: sample-consumer-app
+    build:
+      context: ./ConfigurationManager/
+      dockerfile: SampleConsumerWebApiApp.DockerFile
+    environment:
+      - "RabbitMq/Host=rabbit1"
+      - "RabbitMq/Username=rabbitmq"
+      - "RabbitMq/Password=rabbitmq"
+      - "AppName=SERVICE-A"
+    ports:
+      - "61994:80"
+
+  sample-consumer-app2:
+    container_name: sample-consumer-app2
+    build:
+      context: ./ConfigurationManager/
+      dockerfile: SampleConsumerWebApiApp.DockerFile
+    environment:
+      - "RabbitMq/Host=rabbit1"
+      - "RabbitMq/Username=rabbitmq"
+      - "RabbitMq/Password=rabbitmq"
+      - "AppName=SERVICE-B"
+    ports:
+      - "61995:80"
+
+  rabbit1:
+    image: "rabbitmq:3-management"
+    hostname: "rabbit1"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq1"
+
+  mongodbcs:
+    container_name: mongodbcs
+    image: mongo:latest
+    ports:
+      - 27017:27017
