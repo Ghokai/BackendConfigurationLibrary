@@ -1,8 +1,5 @@
 FROM microsoft/aspnetcore:2.0 AS base
 WORKDIR /app
-#ENV ASPNETCORE_ENVIRONMENT=Production
-#ENV ASPNETCORE_URLS http://*:5000
-#EXPOSE 5000
 
 FROM microsoft/aspnetcore-build:2.0 AS builder
 ARG Configuration=Release
