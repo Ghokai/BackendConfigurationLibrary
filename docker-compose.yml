@@ -1,15 +1,15 @@
 version: "3.5"
 
 services:
-#  configuration-client:
-#    container_name: configuration-client
-#    build:
-#      context: ./configuration-client
-#      dockerfile: Dockerfile
-#    ports:
-#      - "3000:3000"
-#    environment:
-#      - NODE_ENV=development
+  configuration-client:
+    container_name: configuration-client
+    build:
+      context: ./configuration-client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
   configuration-server:
     container_name: configuration-server
     build:
