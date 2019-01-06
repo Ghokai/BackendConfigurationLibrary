@@ -1,17 +1,15 @@
 version: "3.5"
 
 services:
-
-  configuration-client:
-    container_name: configuration-client
-    build:
-      context: ./configuration-client
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=development
-
+#  configuration-client:
+#    container_name: configuration-client
+#    build:
+#      context: ./configuration-client
+#      dockerfile: Dockerfile
+#    ports:
+#      - "3000:3000"
+#    environment:
+#      - NODE_ENV=development
   configuration-server:
     container_name: configuration-server
     build:
@@ -26,7 +24,6 @@ services:
       - "ClientUrl=http://localhost:3000"
     ports:
       - "50165:80"
-
   sample-consumer-app:
     container_name: sample-consumer-app
     build:
@@ -39,7 +36,6 @@ services:
       - "AppName=SERVICE-A"
     ports:
       - "61994:80"
-
   sample-consumer-app2:
     container_name: sample-consumer-app2
     build:
@@ -52,7 +48,6 @@ services:
       - "AppName=SERVICE-B"
     ports:
       - "61995:80"
-
   rabbit1:
     image: "rabbitmq:3-management"
     hostname: "rabbit1"
@@ -66,7 +61,6 @@ services:
       - "5672:5672"
     labels:
       NAME: "rabbitmq1"
-
   mongodbcs:
     container_name: mongodbcs
     image: mongo:latest

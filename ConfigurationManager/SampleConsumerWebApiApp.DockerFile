@@ -5,6 +5,7 @@ FROM microsoft/aspnetcore-build:2.0 AS builder
 ARG Configuration=Release
 WORKDIR /src
 COPY *.sln ./
+COPY .vs/ /.vs/
 COPY SampleConsumerWebApiApp/SampleConsumerWebApiApp.csproj SampleConsumerWebApiApp/
 COPY ConfigurationServer/ConfigurationServer.csproj ConfigurationServer/
 COPY ConfigurationManager/ConfigurationManager.csproj ConfigurationManager/
